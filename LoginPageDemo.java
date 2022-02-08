@@ -1,6 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
-public class LoginPageDemo extends Frame implements ActionListener ,ItemListener {
+public class LoginPageDemo extends Frame implements ActionListener ,ItemListener,WindowListener {
 	Button button=new Button("SUBMIT");
 	boolean student;
 	Checkbox checkbox1,checkbox2;
@@ -13,12 +13,16 @@ public class LoginPageDemo extends Frame implements ActionListener ,ItemListener
 	Label label2 = new Label();
 	Label label3 = new Label();
 	Label label4 = new Label();
+	
+	Font font1 =new Font("TimesRoman",Font.BOLD,13);
+	Font font2 =new Font("TimesRoman",Font.BOLD,15);
 	LoginPageDemo(){
 		
 		setTitle("Sign up page");
-
+		setFont(font1);
 		setVisible(true);
 		setLayout(new FlowLayout(FlowLayout.CENTER));
+		labelTitle.setFont(font2);
 		labelTitle.setText("                     Enter Details                            ");
 		add(labelTitle);
 		labelTitle.setForeground(Color.RED);
@@ -59,6 +63,7 @@ public class LoginPageDemo extends Frame implements ActionListener ,ItemListener
 		
 		button.addActionListener(this);
 		checkbox1.addItemListener(this);
+		addWindowListener(this);
 		
 	}
 	public void itemStateChanged(ItemEvent ie) {}
@@ -81,5 +86,15 @@ public class LoginPageDemo extends Frame implements ActionListener ,ItemListener
 	public static void main(String[] args) {
 		new LoginPageDemo();
 	}
-
+	public void windowClosing (WindowEvent e) {    
+        System.exit(0);
+    }
+	public void windowOpened(WindowEvent e) {}
+	public void windowClosed(WindowEvent e) {}
+	public void windowIconified(WindowEvent e) {}
+	public void windowDeiconified(WindowEvent e) {}
+	public void windowActivated(WindowEvent e) {}
+	public void windowDeactivated(WindowEvent e) {}
 }
+
+
