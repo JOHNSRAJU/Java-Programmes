@@ -29,7 +29,7 @@ class EventHandlingCalc extends Frame implements ActionListener,WindowListener{
 	TextField textField = new TextField();
 	
 	Font font1 = new Font("Serif", Font.BOLD, 20);
-	Font font2 = new Font("SansSerif", Font.BOLD, 12);
+	Font font2 = new Font("SansSerif", Font.BOLD, 15);
 	
 	Label label = new Label();
 	
@@ -217,7 +217,7 @@ class EventHandlingCalc extends Frame implements ActionListener,WindowListener{
 					answer = "Invalid Input";
 			}
 			textField.setText(answer);
-			String stri = new String("ANS: "+ num1 +" "+operation+" " + num2 +" = "+answer);
+			String stri = new String(num1 +" "+operation+" " + num2 +" = "+answer);
 			label.setText(stri);
 			operation='/';
 		}
@@ -228,6 +228,12 @@ class EventHandlingCalc extends Frame implements ActionListener,WindowListener{
 	public void windowClosing (WindowEvent e) {    
         System.exit(0);
     }
+	public void windowOpened(WindowEvent e) {}
+	public void windowClosed(WindowEvent e) {}
+	public void windowIconified(WindowEvent e) {}
+	public void windowDeiconified(WindowEvent e) {}
+	public void windowActivated(WindowEvent e) {}
+	public void windowDeactivated(WindowEvent e) {}
 }
 public class Calculator {
 	public static void main(String []args) {
