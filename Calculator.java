@@ -1,6 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
-class EventHandlingCalc extends Frame implements ActionListener {
+class EventHandlingCalc extends Frame implements ActionListener,WindowListener{
 	String str="0";
 	String strcpy,answer;
 	double ans;
@@ -28,6 +28,9 @@ class EventHandlingCalc extends Frame implements ActionListener {
 	Panel panel = new Panel();
 	TextField textField = new TextField();
 	
+	Font font1 = new Font("Serif", Font.BOLD, 20);
+	Font font2 = new Font("SansSerif", Font.BOLD, 12);
+	
 	Label label = new Label();
 	
 	EventHandlingCalc(){
@@ -35,6 +38,8 @@ class EventHandlingCalc extends Frame implements ActionListener {
 		f.setVisible(true);
 		//f.setSize(550,450);
 		textField.setBounds(10,50,250,50);
+		textField.setFont(font1);
+		label.setFont(font2);
 		label.setBounds(10,110,250,30);
 		label.setBackground(Color.cyan);
 		f.setBounds(200,200,270,470);
@@ -42,6 +47,8 @@ class EventHandlingCalc extends Frame implements ActionListener {
 		f.add(textField);
 		f.add(label);
 		f.setBackground(Color.LIGHT_GRAY);
+		
+		panel.setFont(font1);
 		panel.setVisible(true);
 		panel.setBounds(10,150,250,250);
 		panel.setLayout(new GridLayout(4,4));
@@ -69,6 +76,7 @@ class EventHandlingCalc extends Frame implements ActionListener {
 		panel.add(button0);
 		
 		f.add(panel);
+		buttonEqual.setFont(font1);
 		buttonEqual.setBackground(Color.gray);
 		buttonEqual.setBounds(100,400,60,60);
 		f.add(buttonEqual);
@@ -90,7 +98,8 @@ class EventHandlingCalc extends Frame implements ActionListener {
 		buttonc.addActionListener(this);
 		buttonMulti.addActionListener(this);
 		buttonEqual.addActionListener(this);
-		
+		f.addWindowListener (this);   
+            
 	}
 	public void actionPerformed(ActionEvent e) {
 		
@@ -208,7 +217,7 @@ class EventHandlingCalc extends Frame implements ActionListener {
 					answer = "Invalid Input";
 			}
 			textField.setText(answer);
-			String stri = new String("ANS  "+ num1 +"  "+operation+"  " + num2 +" = "+answer);
+			String stri = new String("ANS: "+ num1 +" "+operation+" " + num2 +" = "+answer);
 			label.setText(stri);
 			operation='/';
 		}
@@ -216,6 +225,9 @@ class EventHandlingCalc extends Frame implements ActionListener {
 			textField.setText("Invalid Input");
 		}
 	}
+	public void windowClosing (WindowEvent e) {    
+        System.exit(0);
+    }
 }
 public class Calculator {
 	public static void main(String []args) {
